@@ -1,0 +1,136 @@
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.root {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  cursor: pointer;
+
+  &[data-disabled] {
+    cursor: default;
+  }
+}
+
+.option {
+  all: unset;
+  cursor: pointer;
+
+  &[data-disabled] {
+    cursor: default;
+  }
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  label {
+    font-size: 14px;
+    color: var(--color-light-100);
+    cursor: pointer;
+
+    [data-disabled] & {
+      opacity: 0.5;
+      cursor: default;
+    }
+  }
+}
+
+.icon {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: transparent;
+  transition: 200ms all;
+
+  &::before {
+    box-sizing: border-box;
+    display: block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--color-light-100, --color-light-100);
+    border-radius: 50%;
+    transition: 200ms border-color;
+    content: '';
+  }
+
+  &::after {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background-color: var(--color-light-100);
+    transition: 200ms background-color;
+    content: '';
+  }
+
+  [data-state='unchecked'] & {
+    &::before {
+      border-color: var(--color-light-100);
+    }
+  }
+
+  [data-state='checked'] & {
+    &::before {
+      border-color: var(--color-light-100);
+    }
+
+    &::after {
+      width: 8px;
+      height: 8px;
+      background-color: var(--color-light-100);
+    }
+  }
+
+  .root[data-disabled] & {
+    &::before {
+      border-width: 2px;
+      border-color: var(--color-dark-300);
+    }
+
+    &::after {
+      background-color: var(--color-dark-300);
+    }
+  }
+
+  .option:focus-visible & {
+    background-color: var(--color-dark-500);
+
+    &::before {
+      border-color: var(--color-light-100);
+    }
+  }
+
+  .option:hover:not([data-disabled]) & {
+    background-color: var(--color-dark-100);
+  }
+
+  .option:active:not([data-disabled]) & {
+    background-color: var(--color-dark-100);
+  }
+}
+
+.error {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--color-danger-500, --color-danger-500);
+}
+
+.labelText {
+  span.highlighted {
+    font-weight: var(--font-weight-bold);
+    color: var(--color-light-100);
+  }
+}

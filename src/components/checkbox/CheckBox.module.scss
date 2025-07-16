@@ -1,0 +1,108 @@
+.main {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: -10px;
+    z-index: -1;
+    display: block;
+    width: 36px;
+    height: 36px;
+    border-radius: 100%;
+    background-color: var(--color-dark-300);
+    transform: translateY(-50%) scale(0);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    content: '';
+  }
+
+  &:focus-within {
+    &::before {
+      background-color: var(--color-dark-500);
+      transform: translateY(-50%) scale(1);
+    }
+  }
+
+  &:active,
+  &:has(.root:active) {
+    &::before {
+      background-color: var(--color-dark-100);
+    }
+  }
+
+  &:has(.root:hover) {
+    &::before {
+      transform: translateY(-50%) scale(1);
+    }
+  }
+
+  .root {
+    all: unset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 14px;
+    height: 14px;
+    border: 1px solid var(--color-light-100);
+    border-radius: 2px;
+    cursor: pointer;
+
+    .indicator {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--color-light-100);
+      font-size: 16px;
+      color: var(--color-dark-900);
+    }
+  }
+
+  .label {
+    padding-left: 12px;
+    font-size: 14px;
+    line-height: 1;
+    color: var(--color-light-100);
+    cursor: pointer;
+  }
+
+  &[aria-disabled='true'] {
+    border-color: var(--color-light-900);
+    cursor: default;
+
+    .indicator {
+      background-color: var(--color-dark-100);
+      color: var(--color-light-700);
+    }
+
+    .label {
+      color: var(--color-light-700);
+      cursor: default;
+    }
+
+    .root {
+      border: 3px solid var(--color-dark-100);
+      cursor: default;
+    }
+
+    &:hover {
+      &::before {
+        transform: scale(0);
+      }
+    }
+
+    &:active {
+      &::before {
+        transform: scale(0);
+      }
+    }
+  }
+
+  .error {
+    position: absolute;
+    top: 12px;
+    font-size: var(--font-size-s);
+    color: var(--color-danger-500);
+  }
+}
