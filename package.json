@@ -8,7 +8,7 @@
   "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/aliadamovich/ui-lib.git"
+    "url": "https://github.com/SuperManagerOfJoyfy/joyfy-lib.git"
   },
   "files": [
     "dist",
