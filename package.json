@@ -1,8 +1,8 @@
 {
   "name": "joyfy-lib",
-  "homepage": "https://SuperManagerOfJoyfy.github.io/joyfy-lib",
+  "homepage": "https://SuperManagerOfJoyfy.github.io/joyfy-lib/",
   "private": false,
-  "version": "0.0.5",
+  "version": "0.0.6",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.js",
